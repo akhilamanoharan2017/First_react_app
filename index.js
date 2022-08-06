@@ -1,22 +1,17 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
-const routes = require('./routes/cities');
-
-const app = express();
-
-app.use(bodyParser.json());
-app.use((req,res,next)=>{
-res.setHeader('Access-Control-Allow-Origin','*');
-res.setHeader(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type,Accept,Authorization'
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
 );
-res.setHeader('Access-Control-Allow-Methods','GET,POST,PATCH,DELETE');
-next();
-});
-app.use(routes);
-app.listen(5000,()=>{
-    
-    console.log("Backend Server is running in port 5000");
-});
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
